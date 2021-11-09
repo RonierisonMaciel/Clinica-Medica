@@ -44,6 +44,17 @@ public class PacienteController {
 	@PostMapping("/editar")
 	public String editar(Paciente paciente) {
 		pacienteService.editar(paciente);
-		return "redirect:/pacientes/cadastrar";
+		return "redirect:/pacientes/listar";
 	}
+	
+	@GetMapping("/excluir/{id}")
+	public String excluir(@PathVariable("id") Long id, ModelMap model) {
+		pacienteService.excluir(id);
+		return listar(model);
+		 
+	}
+	
 }
+
+
+
